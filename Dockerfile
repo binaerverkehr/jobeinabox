@@ -20,6 +20,7 @@ ENV APACHE_LOG_DIR=/var/log/apache2
 ENV APACHE_LOCK_DIR=/var/lock/apache2
 ENV APACHE_PID_FILE=/var/run/apache2.pid
 ENV LANG=C.UTF-8
+ENV APACHE_PORT=4000
 
 # Copy apache virtual host file for later use
 COPY 000-jobe.conf /
@@ -90,7 +91,7 @@ RUN --mount=type=secret,id=api_keys \
     rm -rf /var/lib/apt/lists/*
 
 # Expose apache
-EXPOSE 80
+EXPOSE 4000
 
 # Healthcheck every minute, minimaltest.py should complete within 2 seconds
 # If you're running docker version 25.0 or later, you could consider
